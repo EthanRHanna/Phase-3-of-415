@@ -174,7 +174,6 @@ app.get("/xml/ticket/:id", function (req, res) {
     let query = { id: inputId };
     let result = await collection.findOne(query);
 
-    if (!result) res.send("Ticket Not found").status(404);
     result = js2xmlparser.parseToExistingElement(result);
     res.send(result).status(200);
   }
