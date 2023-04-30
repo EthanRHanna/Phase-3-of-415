@@ -62,7 +62,7 @@ app.get("/xml/ticket/:id", function (req, res) {
 
     if (!result) res.send("Ticket Not found").status(404);
 
-    result = json2xml(JSON.stringify(result));
+    result = js2xml(result);
 
     res.send(result).status(200);
   }
