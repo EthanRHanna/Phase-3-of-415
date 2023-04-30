@@ -167,12 +167,19 @@ app.patch("/rest/patch/:id", function (req, res) {
   run().catch(console.dir);
 });
 
-app.get("/xml/ticket/:id", async function (req, res) {
-  const response = await fetch(
-    "https://four15-project-phase-iii.onrender.com/rest/ticket/:id",
-    { method: "Get", id: req.params.id }
-  );
-  const result = await response.json();
+app.get("/xml/ticket/:id", function (req, res) {
+  const inputId = req.params.id;
+  console.log("Looking for: " + inputId);
 
-  res.send(js2xmlparser.parse("Ticket", result));
+  async function run() {
+    let collection = await client.db("cluster0").collection("SampleForProject");
+    let query = { id: inputId };
+    let result = await collection.findOne(query);
+
+    if (!result) res.send("Ticket Not found").status(404);
+
+    res.send(js2xmlparser.parse("Ticket", result)).status(200);
+  }
+
+  run().catch(console.log(error));
 });
