@@ -174,7 +174,7 @@ app.get("/xml/ticket/:id", function (req, res) {
     let query = { id: inputId };
     let result = await collection.findOne(query);
 
-    result = js2xmlparser.parseToExistingElement(result);
+    result = js2xmlparser.parse("ticket", result);
     res.send(result).status(200);
   }
 
