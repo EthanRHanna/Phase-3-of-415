@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>The FOOORRRRMMMMM!</title>
+    <link rel="stylesheet" href="formCSS.css" />
+  </head>
+
+  <body
+    style="font-family: arial, sans-serif"
+    style="background-color: #e6e6fa">
+    The following needs an action="./users" method=POST
+    <br />where the route /post/users is appended to your URI in order t submitt
+    to your app.
+    <p></p>
+
+    <form action="./rest/ticket/" method="POST">
+      ID: <input type="text" name="id" value="id" /><br />
+      created_at: <input type="text" name="created_at" /><br />
+      updated_at: <input type="text" name="updated_at" /><br />
+      type: <input type="text" name="type" /><br />
+      subject: <input type="text" name="subject" /><br />
+      description: <input type="text" name="description" /><br />
+      priority: <input type="text" name="priority" /><br />
+      status: <input type="text" name="status" /><br />
+      recipient: <input type="text" name="recipient" /><br />
+      submitter: <input type="text" name="submitter" /><br />
+      assignee_id: <input type="text" name="assignee_id" /><br />
+      follower_ids: <input type="text" name="follower_ids" /><br />
+      <input type="submit" name="submit" value="Send" />
+      <p></p>
+    </form>
+  </body>
+</html>
