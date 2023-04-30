@@ -1,8 +1,9 @@
-const adapter = require("./addaptee");
+const { jsToXml, xmlToJs } = require("./addaptee");
 
-function jsToXml(str) {
-  return adapter.jsToXml(str);
+function jsToXmlA(str) {
+  return jsToXml(str);
 }
-function xmlToJs() {
-  return adapter.xmlToJs(xmlFile);
+
+function xmlToJsA() {
+  return xmlToJs(xmlFile);
 }

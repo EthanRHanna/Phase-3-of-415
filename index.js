@@ -1,4 +1,4 @@
-const adapter = require("./adapterClass");
+const { jsToXmlA, xmlToJsA } = require("./adapterClass");
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
@@ -62,7 +62,7 @@ app.get("/xml/ticket/:id", function (req, res) {
 
     if (!result) res.send("Ticket Not found").status(404);
 
-    result = adapter.jsToXml(result);
+    result = jsToXmlA(result);
 
     res.send(result).status(200);
   }
@@ -164,7 +164,7 @@ app.patch(
         await ticket.updateOne(query, updateTicket);
         let result = await ticket.findOne(query);
         console.log(ticket);
-        result = adapter.xmlToJs(result);
+        result = xmlToJsA(result);
         res.send(JSON.stringify(result)).status(200);
       } finally {
         await client.close();
