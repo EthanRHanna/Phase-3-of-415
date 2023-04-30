@@ -1,4 +1,4 @@
-const { json2xml, xml2json } = require("xml-js");
+const { json2xml, xml2json, js2xml } = require("xml-js");
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
