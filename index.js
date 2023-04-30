@@ -1,11 +1,11 @@
 const { json2xml, xml2json, js2xml } = require("xml-js");
+const { json2xml, xml2json, js2xml } = require("xml-js");
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 var fs = require("fs");
-//var Js2xml = require("js2xml").Js2xml;
 const { error } = require("console");
 const xmlparser = require("express-xml-bodyparser");
 app.listen(port);
