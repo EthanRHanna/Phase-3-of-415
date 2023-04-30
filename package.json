@@ -1,14 +1,14 @@
 {
-  "name": "PhaseII",
+  "name": "PhaseIII",
   "version": "1.0.0",
-  "description": "Ethan's Phase 2 CMPS415 Project",
+  "description": "Ethan's Phase 3 CMPS415 Project",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/EthanRHanna/Phase-2-of-415"
+    "url": "https://github.com/EthanRHanna/Phase-3-of-415"
   },
   "author": "Ethan",
   "license": "ISC",
@@ -22,7 +22,7 @@
     "node": ">=14"
   },
   "bugs": {
-    "url": "https://github.com/EthanRHanna/Phase-2-of-415"
+    "url": "https://github.com/EthanRHanna/Phase-3-of-415"
   },
-  "homepage": "https://github.com/EthanRHanna/Phase-2-of-415#readme"
+  "homepage": "https://github.com/EthanRHanna/Phase-3-of-415#readme"
 }
