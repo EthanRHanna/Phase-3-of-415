@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
@@ -165,18 +166,12 @@ app.patch("/rest/patch/:id", function (req, res) {
   run().catch(console.dir);
 });
 
-app.get("/xml/ticket/:id", function (req, res) {
-  const inputId = req.params.id;
-  console.log("Looking for: " + inputId);
+app.get("/xml/ticket/:id", async function (req, res) {
+  const response = await fetch(
+    "https://four15-project-phase-iii.onrender.com/rest/ticket/:id",
+    { method: "Get", id: req.params.id }
+  );
+  const result = await response.json();
 
-  async function run() {
-    let collection = await client.db("cluster0").collection("SampleForProject");
-    let query = { id: inputId };
-    let result = await collection.findOne(query);
-
-    result = js2xmlparser.parse("ticket", result);
-    res.send(result).status(200);
-  }
-
-  run().catch(console.log(error));
+  res.send(js2xmlparser.parse("Ticket", result));
 });
