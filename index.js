@@ -1,11 +1,11 @@
-const { json2xml, xml2json } = require("xml-js");
+const { json2xml, xml2json, js2xml } = require("xml-js");
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 var fs = require("fs");
-var Js2xml = require("js2xml").Js2xml;
+//var Js2xml = require("js2xml").Js2xml;
 const { error } = require("console");
 const xmlparser = require("express-xml-bodyparser");
 app.listen(port);
@@ -63,7 +63,7 @@ app.get("/xml/ticket/:id", function (req, res) {
 
     if (!result) res.send("Ticket Not found").status(404);
 
-    result = js2xml(result);
+    result = js2xml(result).toString();
 
     res.send(result).status(200);
   }
