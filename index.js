@@ -2,7 +2,6 @@ const adapter = require("./adapterClass");
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
-const xmlparser = require("express-xml-bodyparser");
 const app = express();
 const port = 3000;
 var fs = require("fs");
