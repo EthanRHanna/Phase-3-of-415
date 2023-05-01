@@ -212,7 +212,7 @@ app.patch("/xml/patch/:id", function (req, res) {
           tags: req.body.tags,
         },
       };
-      await ticket.updateOne(query, JSON.stringify(xml2js(updateTicket)));
+      await ticket.updateOne(query, updateTicket);
       let result = await ticket.findOne(query);
       console.log(ticket);
       res.send(result).status(200);
