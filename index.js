@@ -12,7 +12,7 @@ var js2xmlparser = require("js2xmlparser");
 
 app.listen(port);
 app.use(express.json());
-app.use(bodyParser);
+app.use(xmlparser);
 app.use(express.urlencoded({ extended: true }));
 
 const uri =
