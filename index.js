@@ -1,5 +1,3 @@
-const fetch = (...args) =>
-  import("node-fetch").then(({ default: fetch }) => fetch(...args));
 const express = require("express");
 const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
@@ -11,7 +9,6 @@ const { xml2js } = require("xml-js");
 
 var fs = require("fs");
 var js2xmlparser = require("js2xmlparser");
-var updateId = -1;
 
 app.listen(port);
 app.use(express.json());
