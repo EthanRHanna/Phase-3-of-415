@@ -186,43 +186,39 @@ app.get("/xml/ticket/:id", function (req, res) {
   run().catch(console.log(error));
 });
 
-app.patch(
-  "/xml/patch/:id",
-  xmlparser({ trim: false, explicitArray: false }),
-  function (req, res) {
-    const client = new MongoClient(uri);
+app.patch("/xml/patch/:id", function (req, res) {
+  const client = new MongoClient(uri);
 
-    async function run() {
-      try {
-        const database = client.db("cluster0");
-        const ticket = database.collection("SampleForProject");
-        const searchId = req.params.id;
-        const query = { id: searchId };
+  async function run() {
+    try {
+      const database = client.db("cluster0");
+      const ticket = database.collection("SampleForProject");
+      const searchId = req.params.id;
+      const query = { id: searchId };
 
-        var updateTicket = {
-          $set: {
-            createdAt: req.body.createdAt,
-            updatedAt: req.body.updatedAt,
-            type: req.body.type,
-            subject: req.body.subject,
-            Description: req.body.Description,
-            priority: req.body.priority,
-            status: req.body.status,
-            recipient: req.body.recipient,
-            submitter: req.body.submitter,
-            assignee_ID: req.body.assignee_ID,
-            follower_IDs: req.body.follower_IDs,
-            tags: req.body.tags,
-          },
-        };
-        await ticket.updateOne(query, JSON.stringify(xml2js(updateTicket)));
-        let result = await ticket.findOne(query);
-        console.log(ticket);
-        res.send(result).status(200);
-      } finally {
-        await client.close();
-      }
+      var updateTicket = {
+        $set: {
+          createdAt: req.body.createdAt,
+          updatedAt: req.body.updatedAt,
+          type: req.body.type,
+          subject: req.body.subject,
+          Description: req.body.Description,
+          priority: req.body.priority,
+          status: req.body.status,
+          recipient: req.body.recipient,
+          submitter: req.body.submitter,
+          assignee_ID: req.body.assignee_ID,
+          follower_IDs: req.body.follower_IDs,
+          tags: req.body.tags,
+        },
+      };
+      await ticket.updateOne(query, JSON.stringify(xml2js(updateTicket)));
+      let result = await ticket.findOne(query);
+      console.log(ticket);
+      res.send(result).status(200);
+    } finally {
+      await client.close();
     }
-    run().catch(console.dir);
   }
-);
+  run().catch(console.dir);
+});
