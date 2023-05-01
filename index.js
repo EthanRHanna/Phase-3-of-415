@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 const { error } = require("console");
+const xmlparser = require("express-xml-bodyparser");
 
 var fs = require("fs");
 var js2xmlparser = require("js2xmlparser");
@@ -11,6 +12,7 @@ var js2xmlparser = require("js2xmlparser");
 app.listen(port);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(xmlparser());
 
 const uri =
   "mongodb+srv://User:HPIx5GGvfwzjgGNF@cluster0.cllmezs.mongodb.net/?retryWrites=true&w=majority";
@@ -213,6 +215,8 @@ app.patch("/rest/xml/patch/:id", function (req, res) {
           tags: req.body.tags,
         },
       };
+
+      updateTicket = JSON.parse(JSON.stringify(xmlparser(updateTicket)));
 
       await ticket.updateOne(query, updateTicket);
       let result = await ticket.findOne(query);
