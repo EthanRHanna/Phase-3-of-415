@@ -169,6 +169,7 @@ app.patch("/rest/patch/:id", function (req, res) {
   run().catch(console.dir);
 });
 
+//XML Get method
 app.get("/xml/ticket/:id", function (req, res) {
   const inputId = req.params.id;
   console.log("Looking for: " + inputId);
@@ -186,6 +187,7 @@ app.get("/xml/ticket/:id", function (req, res) {
   run().catch(console.log(error));
 });
 
+//XML Patch method
 app.patch("/xml/patch/:id", function (req, res) {
   const client = new MongoClient(uri);
 
