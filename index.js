@@ -169,7 +169,7 @@ app.patch("/rest/patch/:id", function (req, res) {
 });
 
 //XML Get Method
-app.get("/xml/ticket/:id", function (req, res) {
+app.get("/rest/xml/ticket/:id", function (req, res) {
   const inputId = req.params.id;
   console.log("Looking for: " + inputId);
 
