@@ -167,6 +167,7 @@ app.patch("/rest/patch/:id", function (req, res) {
   run().catch(console.dir);
 });
 
+//XML Get Method
 app.get("/xml/ticket/:id", function (req, res) {
   const inputId = req.params.id;
   console.log("Looking for: " + inputId);
@@ -180,7 +181,6 @@ app.get("/xml/ticket/:id", function (req, res) {
 
     res.send(js2xmlparser.parse("Ticket", result)).status(200);
   }
-  //Hi
 
   run().catch(console.log(error));
 });
