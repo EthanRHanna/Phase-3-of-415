@@ -5,21 +5,23 @@ const { MongoClient } = require("mongodb");
 const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
-var fs = require("fs");
-var js2xmlparser = require("js2xmlparser");
 const { error } = require("console");
 const xmlparser = require("express-xml-bodyparser");
 const { xml2js } = require("xml-js");
+
+var fs = require("fs");
+var js2xmlparser = require("js2xmlparser");
+var updateId = -1;
+
 app.listen(port);
 app.use(express.json());
 app.use(bodyParser);
 app.use(express.urlencoded({ extended: true }));
+
 const uri =
   "mongodb+srv://User:HPIx5GGvfwzjgGNF@cluster0.cllmezs.mongodb.net/?retryWrites=true&w=majority";
 
 const client = new MongoClient(uri);
-
-var updateId = -1;
 
 app.get("/form", function (req, res) {
   res.setHeader("Content-Type", "text/html");
